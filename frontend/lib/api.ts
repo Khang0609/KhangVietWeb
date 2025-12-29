@@ -2,7 +2,7 @@ export const getApiUrl = () => {
   // 1. If running on Server (node), use BACKEND_URL (Docker network access)
   // 2. If running on Client (browser), use NEXT_PUBLIC_API_URL
   if (typeof window === "undefined") {
-    return process.env.BACKEND_URL || "http://backend:8000";
+    return process.env.INTERNAL_API_URL || "http://backend:8000";
   }
   return process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 };
