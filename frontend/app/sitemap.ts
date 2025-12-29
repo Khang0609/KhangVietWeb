@@ -5,7 +5,7 @@ import { Product } from "@/types/product";
 import { Project } from "@/types/project";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://quangcaokhangviet.com"; // Thay bằng domain thật sau này
+  const baseUrl = "https://khang-viet-design.up.railway.app"; // Thay bằng domain thật sau này
 
   // 1. Các trang tĩnh (Trang chủ, Giới thiệu, Liên hệ)
   const staticPages = [""].map((route) => ({
