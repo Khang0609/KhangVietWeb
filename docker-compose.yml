@@ -1,0 +1,51 @@
+services:
+  # Dịch vụ Backend
+  backend:
+    container_name: khangviet-backend
+    build: ./backend # Đường dẫn tới folder chứa Dockerfile backend
+    ports:
+      - "8000:8000" # Nối cổng 8000 của Docker ra 8000 của máy thật
+    env_file:
+      - ./backend/.env # Đọc file mật khẩu DB từ đây
+
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    depends_on:
+      - redis
+    develop:
+      watch:
+        - path: ./backend
+          action: sync
+          target: /app
+
+  # Dịch vụ Frontend
+  frontend:
+    container_name: khangviet-frontend
+    build: ./frontend # Đường dẫn tới folder chứa Dockerfile frontend
+    ports:
+      - "3000:3000" # Nối cổng 3000 của Docker ra 3000 của máy thật
+
+    command: npm run dev
+    environment:
+      - WATCHPACK_POLLING=true
+      - CHOKIDAR_USEPOLLING=1
+      # Cái này quan trọng:
+      # Khi chạy trong Docker, Frontend cần biết Backend ở đâu.
+      # Nếu client (trình duyệt) gọi -> vẫn là localhost:8000
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+      - BACKEND_URL=http://backend:8000
+      - INTERNAL_API_URL=http://backend:8000
+    depends_on:
+      - backend # Chờ backend chạy xong mới chạy frontend
+    develop:
+      watch:
+        - path: ./frontend
+          action: sync
+          target: /app
+          ignore:
+            - node_modules/
+
+  # Dịch vụ Redis Cache
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
