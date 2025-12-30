@@ -57,9 +57,11 @@ async def limit_upload_size(request: Request, call_next):
 
 # --- CORS Configuration ---
 
+origins = ["https://khang-viet-web-s2ra-alerazeic-khangs-projects-1a7e2aab.vercel.app", "http://localhost:3000"]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins="http://localhost:3000",
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],  # Allow all HTTP methods
     allow_headers=["*"],
