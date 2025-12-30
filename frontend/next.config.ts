@@ -12,10 +12,11 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "images.unsplash.com",
       },
+      { protocol: "https", hostname: "khang-viet-design.up.railway.app" },
       {
-        protocol: 'http',
-        hostname: 'localhost', // Nếu chạy local
-        port: '8000',          // Cổng của backend
+        protocol: "http",
+        hostname: "localhost", // Nếu chạy local
+        port: "8000", // Cổng của backend
       },
     ],
   },
