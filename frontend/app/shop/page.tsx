@@ -1,10 +1,10 @@
 import { CustomCursor } from "@/components/CustomCursor";
 import { Shop } from "@/components/shop/Shop";
 import { Product } from "@/types/product";
+import { getApiUrl } from "@/lib/api";
 
 export const dynamic = "force-dynamic";
 
-import { getApiUrl } from "@/lib/api";
 
 async function getProducts() {
   const baseUrl = getApiUrl();
