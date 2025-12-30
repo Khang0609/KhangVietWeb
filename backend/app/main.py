@@ -6,6 +6,7 @@ from fastapi.middleware.gzip import GZipMiddleware
 from app.database import init_db
 from app.core.redis import init_redis
 from contextlib import asynccontextmanager
+from fastapi.middleware.httpsredirect import HTTPSRedirectMiddleware
 
 
 # Async context manager for application lifespan events
@@ -37,6 +38,7 @@ async def lifespan(app: FastAPI):
     # Cleanup tasks can be added here if needed
 
 app = FastAPI(lifespan=lifespan)
+app.add_middleware(HTTPSRedirectMiddleware)
 
 # --- Middleware to limit upload size (Custom) ---
 # Enforce roughly 10MB limit + overhead
