@@ -104,7 +104,7 @@ const CMSPage = () => {
       setStatus("Đang tải danh sách công ty...");
     const baseUrl = getApiUrl();
     try {
-      const response = await fetch(`${baseUrl}/companies`);
+      const response = await fetch(`${baseUrl}/companies/`);
       if (!response.ok) throw new Error("Failed to fetch companies.");
       const data: Company[] = await response.json();
       setCompanies(data);
