@@ -44,9 +44,9 @@ export default function CategoryManagementPage() {
 
   const fetchCategories = useCallback(async () => {
     setIsLoading(true);
+    const baseUrl = getApiUrl();
     try {
-      // Use localhost directly if getApiUrl not reliable in this context, or use standard env
-      const response = await fetch("http://localhost:8000/categories");
+      const response = await fetch(`${baseUrl}/categories`);
       if (!response.ok) throw new Error("Failed to fetch categories");
       let data = await response.json();
       // Normalize _id to id if needed, though Pydantic usually handles it
@@ -108,10 +108,12 @@ export default function CategoryManagementPage() {
     setIsSubmitting(true);
     setStatus("");
 
+    const baseUrl = getApiUrl();
+
     try {
       const url = editingCategory
-        ? `http://localhost:8000/categories/${editingCategory.id}`
-        : "http://localhost:8000/categories";
+        ? `${baseUrl}/categories/${editingCategory.id}`
+        : `${baseUrl}/categories`;
       const method = editingCategory ? "PUT" : "POST";
 
       const response = await fetch(url, {
@@ -138,7 +140,8 @@ export default function CategoryManagementPage() {
   const handleDelete = async (id: string) => {
     if (!confirm("Bạn có chắc chắn muốn xóa danh mục này?")) return;
     try {
-      const response = await fetch(`http://localhost:8000/categories/${id}`, {
+      const baseUrl = getApiUrl();
+      const response = await fetch(`${baseUrl}/categories/${id}`, {
         method: "DELETE",
       });
       if (!response.ok) {

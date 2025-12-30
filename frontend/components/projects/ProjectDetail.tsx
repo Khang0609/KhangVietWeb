@@ -48,7 +48,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
           {/* Left Side - Images & Description */}
           <div>
             {/* Main Image */}
-            <div className="aspect-[4/3] bg-[#2C2C2C] rounded-lg overflow-hidden mb-4">
+            <div className="aspect-4/3 bg-[#2C2C2C] rounded-lg overflow-hidden mb-4">
               <ImageWithFallback
                 src={project.gallery_images[selectedImage]}
                 alt={project.title}
@@ -63,7 +63,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
                   <button
                     key={index}
                     onClick={() => setSelectedImage(index)}
-                    className={`aspect-[4/3] w-24 rounded-lg overflow-hidden border-2 transition-all ${
+                    className={`aspect-4/3 w-24 rounded-lg overflow-hidden border-2 transition-all ${
                       selectedImage === index
                         ? "border-[#FF6B00]"
                         : "border-transparent hover:border-white/30"

@@ -56,7 +56,7 @@ const AdminSidebar = () => {
         <h1 className="text-2xl font-bold text-[#FF6B00]">KhangViet</h1>
         <span className="text-sm text-gray-400">Admin Panel</span>
       </div>
-      <nav className="flex-grow space-y-6 px-4">
+      <nav className="grow space-y-6 px-4">
         {/* Main Group */}
         <div>
           {menuItems

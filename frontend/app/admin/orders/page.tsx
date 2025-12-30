@@ -28,6 +28,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { getApiUrl } from "@/lib/api";
 
 // --- TYPE DEFINITIONS BASED ON BACKEND ---
 interface OrderItem {
@@ -112,8 +113,9 @@ export default function OrderManagementPage() {
 
   useEffect(() => {
     const fetchOrders = async () => {
+      const baseUrl = getApiUrl();
       try {
-        const response = await fetch("http://localhost:8000/orders", {
+        const response = await fetch(`${baseUrl}/orders`, {
           cache: "no-store",
         });
         // const response = await res.json();

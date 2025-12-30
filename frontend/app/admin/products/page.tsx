@@ -43,6 +43,7 @@ import { compressImage } from "@/lib/utils";
 import { uploadToCloudinary } from "@/lib/cloudinary";
 import { DraggableImageList } from "@/components/admin/DraggableImageList";
 import { toast } from "sonner";
+import { getApiUrl } from "@/lib/api";
 
 // --- TYPE DEFINITIONS (matching backend models.py) ---
 interface ProductOptionChoice {
@@ -103,9 +104,10 @@ export default function ProductManagementPage() {
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchProducts = useCallback(async () => {
+    const baseUrl = getApiUrl();
     setIsLoading(true);
     try {
-      const response = await fetch("http://localhost:8000/products");
+      const response = await fetch(`${baseUrl}/products`);
       if (!response.ok) throw new Error("Failed to fetch");
       let data: Product[] = await response.json();
       // Beanie uses `id` but MongoDB driver might return `_id`. Let's standardize.
@@ -150,9 +152,10 @@ export default function ProductManagementPage() {
       )
     )
       return;
+    const baseUrl = getApiUrl();
     try {
       const response = await fetch(
-        `http://localhost:8000/products/${productId}`,
+        `${baseUrl}/products/${productId}`,
         { method: "DELETE" },
       );
       if (!response.ok) {
@@ -305,9 +308,10 @@ const ProductEditor = ({
   const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
+    const baseUrl = getApiUrl();
     const fetchCategories = async () => {
       try {
-        const res = await fetch("http://localhost:8000/categories");
+        const res = await fetch(`${baseUrl}/categories`);
         if (res.ok) {
           let data = await res.json();
           // Normalize _id to id
@@ -457,11 +461,12 @@ const ProductEditor = ({
     };
 
     setStatus(isEditMode ? "Đang cập nhật..." : "Đang tạo...");
-
+    
+    const baseUrl = getApiUrl();
     // Add trailing slash to avoid 307 Redirects
     const url = isEditMode
-      ? `http://localhost:8000/products/${product.id}`
-      : `http://localhost:8000/products/`;
+      ? `${baseUrl}/products/${product.id}`
+      : `${baseUrl}/products/`;
     const method = isEditMode ? "PUT" : "POST";
 
     try {

@@ -34,7 +34,7 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
       ref={ref}
       className="py-24 bg-[#0A0A0A] relative overflow-hidden"
     >
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#FF6B00]/3 blur-[200px] rounded-full -z-0"></div>
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#FF6B00]/3 blur-[200px] rounded-full z-0"></div>
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -50,7 +50,7 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
           </div>
           <h2 className="text-[clamp(2.5rem,5vw,4rem)] uppercase tracking-tight leading-tight">
             <span className="text-white">Những công trình </span>
-            <span className="bg-gradient-to-r from-[#FF6B00] to-[#D32F2F] bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-[#FF6B00] to-[#D32F2F] bg-clip-text text-transparent">
               ấn tượng
             </span>
           </h2>
@@ -82,7 +82,7 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
                       alt={project.name}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/50 to-transparent"></div>
+                    <div className="absolute inset-0 bg-linear-to-t from-[#0A0A0A] via-[#0A0A0A]/50 to-transparent"></div>
                     {/* <div className="absolute top-6 left-6 bg-[#FF6B00]/90 backdrop-blur-sm text-white px-4 py-2 text-sm uppercase tracking-wider">
                       {project.address || 'Dự án'}
                     </div> */}
@@ -91,7 +91,7 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
                     </div>
                   </div>
 
-                  <div className="p-8 bg-gradient-to-b from-[#0A0A0A] to-[#1E1E1E] h-full">
+                  <div className="p-8 bg-linear-to-b from-[#0A0A0A] to-[#1E1E1E] h-full">
                     <div className="mb-3">
                       <span className="text-[#FF6B00]/70 text-sm tracking-wider uppercase">
                         {project.company_slug}
@@ -105,10 +105,10 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
                     </p>
                   </div>
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#FF6B00]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                  <div className="absolute inset-0 bg-linear-to-t from-[#FF6B00]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                 </div>
                 <motion.div
-                  className="h-1 bg-gradient-to-r from-[#FF6B00] to-[#D32F2F] mt-2"
+                  className="h-1 bg-linear-to-r from-[#FF6B00] to-[#D32F2F] mt-2"
                   initial={{ width: "0%" }}
                   whileInView={{ width: "100%" }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}

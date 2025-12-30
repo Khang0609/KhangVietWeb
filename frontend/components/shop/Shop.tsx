@@ -8,6 +8,7 @@ import { Product } from "@/types/product";
 import { SHOW_COMMERCE_FEATURES } from "@/lib/config";
 import { useCart } from "@/components/providers/CartContext";
 import { QuickAddModal } from "./QuickAddModal";
+import { getApiUrl } from "@/lib/api";
 
 const ALL_CATEGORIES = "Tất cả sản phẩm";
 
@@ -44,10 +45,11 @@ export function Shop({ products }: ShopProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Fetch categories from backend on mount
+  const baseUrl = getApiUrl();
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await fetch("http://localhost:8000/categories");
+        const res = await fetch(`${baseUrl}/categories`);
         if (res.ok) {
           let data = await res.json();
           // Normalize data

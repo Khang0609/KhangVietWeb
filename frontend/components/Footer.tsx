@@ -34,7 +34,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="relative overflow-hidden border-t border-[#FF6B00]/20 bg-gradient-to-b from-[#0A0A0A] to-[#121212]">
+    <footer className="relative overflow-hidden border-t border-[#FF6B00]/20 bg-linear-to-b from-[#0A0A0A] to-[#121212]">
       {/* Decorative Background Elements */}
       <div className="absolute top-0 left-1/4 h-[500px] w-[500px] rounded-full bg-[#FF6B00]/3 blur-[200px]"></div>
       <div className="absolute right-1/4 bottom-0 h-[400px] w-[400px] rounded-full bg-[#D32F2F]/3 blur-[200px]"></div>
@@ -52,7 +52,7 @@ export function Footer() {
                 viewport={{ once: true }}
               >
                 <h3 className="mb-6 text-[clamp(2rem,4vw,3rem)] tracking-tight uppercase">
-                  <span className="bg-gradient-to-r from-[#FF6B00] to-[#D32F2F] bg-clip-text text-transparent">
+                  <span className="bg-linear-to-r from-[#FF6B00] to-[#D32F2F] bg-clip-text text-transparent">
                     KHANG VIỆT
                   </span>
                 </h3>
@@ -69,7 +69,7 @@ export function Footer() {
                     rel="noopener noreferrer"
                     className="group flex items-start gap-3 text-white/70 transition-colors duration-300 hover:text-[#FF6B00]"
                   >
-                    <MapPin className="mt-1 h-5 w-5 flex-shrink-0 text-[#FF6B00] transition-transform duration-300 group-hover:scale-110" />
+                    <MapPin className="mt-1 h-5 w-5 shrink-0 text-[#FF6B00] transition-transform duration-300 group-hover:scale-110" />
                     <span>
                       687/24/34 Kinh Dương Vương, phường An Lạc, TP.HCM
                     </span>
@@ -169,7 +169,7 @@ export function Footer() {
               </div>
               <Button className="group relative overflow-hidden bg-[#FF6B00] px-8 py-6 text-lg whitespace-nowrap text-white hover:bg-[#FF6B00]/80">
                 <span className="relative z-10">Liên Hệ Ngay</span>
-                <span className="absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-[#D32F2F] to-[#FF6B00] transition-transform duration-500 group-hover:translate-x-0"></span>
+                <span className="absolute inset-0 -translate-x-full bg-linear-to-r from-[#D32F2F] to-[#FF6B00] transition-transform duration-500 group-hover:translate-x-0"></span>
               </Button>
             </div>
           </motion.div>

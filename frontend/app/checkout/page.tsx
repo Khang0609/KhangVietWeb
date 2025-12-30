@@ -8,6 +8,7 @@ import { toast } from 'sonner';
 import Image from 'next/image';
 import { Trash2, Home } from 'lucide-react';
 import Link from 'next/link';
+import { getApiUrl } from '@/lib/api';
 
 export default function CheckoutPage() {
   const { cartItems, removeFromCart, clearCart } = useCart();
@@ -42,8 +43,9 @@ export default function CheckoutPage() {
       })),
     };
 
+    const baseUrl = getApiUrl();
     try {
-      const response = await fetch('http://localhost:8000/orders', {
+      const response = await fetch(`${baseUrl}/orders`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,5 +1,6 @@
 import { GalleryProjectDetail } from "@/components/gallery/GalleryProjectDetail";
 import { notFound } from "next/navigation";
+import { getApiUrl } from "@/lib/api";
 
 // Revalidate every 60 seconds
 export const revalidate = 60;
@@ -8,10 +9,7 @@ interface ProjectPageProps {
   params: Promise<{ slug: string }>; // Params bây giờ là Promise
 }
 
-const baseUrl =
-  process.env.INTERNAL_API_URL ||
-  process.env.BACKEND_URL ||
-  "http://backend:8000";
+const baseUrl = getApiUrl();
 
 // Statically generate routes at build time
 export async function generateStaticParams() {

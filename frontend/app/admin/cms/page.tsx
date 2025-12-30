@@ -85,9 +85,9 @@ const CMSPage = () => {
   // --- DATA FETCHING ---
   const fetchProjects = useCallback(async () => {
     setStatus("Đang tải danh sách dự án...");
-    setStatus("Đang tải danh sách dự án...");
+    const baseUrl = getApiUrl();
     try {
-      const response = await fetch(`${getApiUrl()}/projects`);
+      const response = await fetch(`${baseUrl}/projects`);
       if (!response.ok) throw new Error("Failed to fetch projects.");
       const data: Project[] = await response.json();
       setProjects(data);
@@ -101,8 +101,10 @@ const CMSPage = () => {
   }, []);
 
   const fetchCompanies = useCallback(async () => {
+      setStatus("Đang tải danh sách công ty...");
+    const baseUrl = getApiUrl();
     try {
-      const response = await fetch(`${getApiUrl()}/companies`);
+      const response = await fetch(`${baseUrl}/companies`);
       if (!response.ok) throw new Error("Failed to fetch companies.");
       const data: Company[] = await response.json();
       setCompanies(data);

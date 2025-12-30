@@ -1,5 +1,6 @@
 import { CustomCursor } from "@/components/CustomCursor";
 import { ProductDetail } from "@/components/shop/ProductDetail";
+import { getApiUrl } from "@/lib/api";
 import { Product } from "@/types/product";
 import { notFound } from "next/navigation";
 
@@ -7,10 +8,7 @@ export const dynamic = "force-dynamic";
 
 export async function getProduct(id: string): Promise<Product | null> {
   // Use INTERNAL_API_URL or BACKEND_URL, fallback to localhost
-  const baseUrl =
-    process.env.INTERNAL_API_URL ||
-    process.env.BACKEND_URL ||
-    "http://backend:8000";
+  const baseUrl = getApiUrl();
 
   try {
     const res = await fetch(`${baseUrl}/products/${id}`, {
