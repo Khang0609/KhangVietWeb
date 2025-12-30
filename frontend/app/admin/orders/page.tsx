@@ -114,6 +114,7 @@ export default function OrderManagementPage() {
   useEffect(() => {
     const fetchOrders = async () => {
       const baseUrl = getApiUrl();
+      console.log(baseUrl); 
       try {
         const response = await fetch(`${baseUrl}/orders`, {
           cache: "no-store",
